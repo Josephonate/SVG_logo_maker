@@ -17,7 +17,8 @@ const questions = [
     {
         type: 'list',
         name: 'shape',
-        choices: ["circle", "square", "triangle"]
+        message: 'Choose a shape',
+        choices: ["Circle", "Square", "Triangle"]
     },
     {
         type: 'input',
