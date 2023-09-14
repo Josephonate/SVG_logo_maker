@@ -1,14 +1,14 @@
 // TODO: Include packages needed for this application
 const inquirer = require('inquirer');
 const fs = require('fs');
-const {generateLogo} = require("./lib/shapes")
+const { generateLogo } = require("./lib/shapes")
 // TODO: Create an array of questions for user input
 const questions = [
     {
         type: 'input',
         name: 'text',
         message: 'Enter 3 characters',
-        
+
     },
     {
         type: 'input',
@@ -38,16 +38,19 @@ function init() {
     inquirer
         .prompt(questions)
         .then((answers) => {
-            const logoContent = generateLogo(answers);
-            writeToFile('logo.svg', logoContent)
-// let userInput = "";
-//             if (answers.text.length > 0 && answers.text.length < 4) {
-//                 userInput = answers.text;
-//             } else {
-//                 console.log ("Input is required to be between 1-3 characters try again!")
-//                 return;
-//             }
-         });
+
+            try {
+                if (answers.text.length > 0 && answers.text.length < 4) {
+                    const logoContent = generateLogo(answers);
+                    writeToFile('logo.svg', logoContent)
+                } else {
+                    throw new Error("Input is required to be between 1-3 characters try again!")
+                }
+
+            } catch (error) {
+                console.error(error.message);
+            }
+        });
 }
 
 init();
