@@ -8,6 +8,7 @@ const questions = [
         type: 'input',
         name: 'text',
         message: 'Enter 3 characters',
+        
     },
     {
         type: 'input',
@@ -39,7 +40,14 @@ function init() {
         .then((answers) => {
             const logoContent = generateLogo(answers);
             writeToFile('logo.svg', logoContent)
-        });
+// let userInput = "";
+//             if (answers.text.length > 0 && answers.text.length < 4) {
+//                 userInput = answers.text;
+//             } else {
+//                 console.log ("Input is required to be between 1-3 characters try again!")
+//                 return;
+//             }
+         });
 }
 
 init();
